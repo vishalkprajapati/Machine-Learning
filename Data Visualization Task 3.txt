@@ -1,0 +1,30 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+df=pd.read_csv("http://13.234.66.67/summer19/datasets/bank.csv")
+df.head(8)
+
+plt.bar(df.Balance,df.EstimatedSalary)
+plt.xlabel("Balance")
+plt.ylabel("EstimatedSalary")
+plt.show()
+
+plt.bar(df.Age,df.Balance)
+plt.xlabel("Age")
+plt.ylabel("Balance")
+plt.show()
+
+df.groupby('Gender').size().plot('pie',shadow=True,label='Gender',explode=[0,0.05],autopct='%d%%')
+
+plt.scatter(df.Age,df.EstimatedSalary)
+plt.xlabel("Age")
+plt.ylabel("EstimatedSalary")
+
+plt.bar(df["CreditScore"],df["Age"])
+plt.xlabel("Creditscore")
+plt.ylabel("Age")
+
+df[df['Gender']=='Female'].groupby('Geography').size().plot('pie',shadow=True, label='Geography' ,autopct='%1.1f%%')
+
+df[df['Geography']=='Spain'].groupby('Gender').size().plot('pie',shadow=True, label='Spain' ,autopct='%1.1f%%')
